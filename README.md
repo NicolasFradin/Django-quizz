@@ -2,6 +2,7 @@
 Quizz App with Python Django Framework and SQLite3
 
 # Concepts Learned :
+- Model-View-Template (MVT)
 - project vs. app
 - migrations
 - Django files structure 
