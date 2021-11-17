@@ -9,10 +9,25 @@
 #
 
 
+# from django.shortcuts import get_object_or_404, render
+# from ..models import Choice, Question
+
+
+# def results(request, question_id):
+# 	question = get_object_or_404(Question, pk=question_id)
+# 	return render(request, 'polls/results.html', {'question': question})
+
+
+
+#Using generic views : 
+
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+from django.views import generic
+
 from ..models import Choice, Question
 
-
-def results(request, question_id):
-	question = get_object_or_404(Question, pk=question_id)
-	return render(request, 'polls/results.html', {'question': question})
+class ResultsView(generic.DetailView):
+    model = Question  	#model = Question is really just shorthand for saying queryset = Question.objects.all()
+    template_name = 'polls/results.html'
