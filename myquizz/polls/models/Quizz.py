@@ -2,12 +2,16 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from django.contrib import admin
-from .Quizz import Quizz
 
 
-class Question(models.Model):
-	quizz = models.ForeignKey(Quizz, on_delete=models.CASCADE, null=True)
-	question_text = models.CharField(max_length=200)
+class Quizz(models.Model):
+	
+	class Meta:
+		#ordering = [‘created’,]
+		verbose_name ="Quizz"
+		verbose_name_plural ="Quizzes"
+
+	name = models.CharField(max_length=200)
 	pub_date = models.DateTimeField('date published', default=datetime.datetime.today)
 
 	@admin.display(				#Permet de changer le display dans l'admin panel
@@ -29,4 +33,4 @@ class Question(models.Model):
 		return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 	def __str__(self):
-		return self.question_text
+		return self.name

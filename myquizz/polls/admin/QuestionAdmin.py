@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from polls.models import *
 
 # Register your models here.
 # Add your models where to show them in the Django admin panel
@@ -15,8 +15,8 @@ class ChoiceInline(admin.TabularInline):  #Affichage : StackedInline / TabularIn
 
 class QuestionAdmin(admin.ModelAdmin):
 	fieldsets = [
-		(None,               {'fields': ['question_text']}),
-		('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
+		("TEXT",               {'fields': ['question_text']}),
+		('DATE', {'fields': ['pub_date'], 'classes': ['collapse']}),
 	]
 	inlines = [ChoiceInline]		#This tells Django: “Choice objects are edited on the Question admin page. By default, provide enough fields for 3 choices.”
 

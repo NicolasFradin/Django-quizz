@@ -14,7 +14,10 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from ..models import Choice, Question
+from django.contrib.auth.decorators import login_required
+
 # ...
+@login_required
 def vote(request, question_id):
 	question = get_object_or_404(Question, pk=question_id)
 	try:

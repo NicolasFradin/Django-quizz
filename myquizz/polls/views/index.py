@@ -32,6 +32,7 @@ from django.views import generic
 from ..models import Choice, Question
 
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 class IndexView(generic.ListView):
 	template_name = 'polls/index.html'				#the ListView generic view uses a default template called <app name>/<model name>_list.html; we use template_name to tell ListView to use our existing "polls/index.html" template.

@@ -133,3 +133,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Used by @Login_required Decorator
+# allows us to redirect any URL request to a pre-defined LOGIN_URL
+# Login & Logout URLs
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/polls/'
+# LOGOUT_REDIRECT_URL = '/accounts/login/'
