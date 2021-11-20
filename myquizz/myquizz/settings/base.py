@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'polls.apps.PollsConfig',               #Created app added
+    'rest_framework'                        #REST Framework app
 ]
 
 MIDDLEWARE = [

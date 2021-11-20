@@ -2,17 +2,25 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from django.contrib import admin
+from polls.TimeStampMixin import TimeStampMixin				#Abstract class for dates
 
-
-class Quizz(models.Model):
+class Quizz(TimeStampMixin):
 	
+	DIFF_CHOICES = (
+		('easy', 1),
+		('medium', 2),
+		('hard', 3),
+	)
+
+
+
 	class Meta:
 		#ordering = [‘created’,]
 		verbose_name ="Quizz"
 		verbose_name_plural ="Quizzes"
 
 	name = models.CharField(max_length=200)
-	pub_date = models.DateTimeField('date published', default=datetime.datetime.today)
+	difficulty = models.CharField(max_length=6, null=True, choices=DIFF_CHOICES, help_text="difficulty of the quizz")
 
 	@admin.display(				#Permet de changer le display dans l'admin panel
 		boolean=True,			#remplace le str 'True' ou 'False' par un logo
